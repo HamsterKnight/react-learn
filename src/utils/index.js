@@ -51,13 +51,13 @@ function myToFixed(zeroStrNum) {
   }
 }
 
-console.log(myToFixed(1.255))
+console.log(myToFixed(1.255));
 
 /**
- * 
+ *
  * @param {*} num 数字
  * @param {*} scale 保留多少位小数
- * @returns 
+ * @returns
  */
 function _myToFixed(num, scale) {
   var s = num + "";
@@ -78,13 +78,13 @@ function _myToFixed(num, scale) {
     // d*$ 匹配任意数字结尾
     new RegExp("^(-|\\+)?(\\d+(\\.\\d{0," + (scale + 1) + "})?)\\d*$").test(s)
   ) {
-    var s = "0" + RegExp.$2,// 匹配固定长度的数字
-      pm = RegExp.$1,// 匹配符号
-      a = RegExp.$3.length,//匹配小数点及固定长度的小数，数字
+    var s = "0" + RegExp.$2, // 匹配固定长度的数字
+      pm = RegExp.$1, // 匹配符号
+      a = RegExp.$3.length, //匹配小数点及固定长度的小数，数字
       b = true;
-      console.log('RegExp', RegExp.$2, RegExp.$1, RegExp.$3)
-      // 如果匹配的长度，和需要保留的长度 + 2 一致(因为a的长度包括了小数点,然后判断是否需要四舍五入，还需要取定长的后一位(正则表达式中已写))
-      // 对数值进行进位判断处理
+    console.log("RegExp", RegExp.$2, RegExp.$1, RegExp.$3);
+    // 如果匹配的长度，和需要保留的长度 + 2 一致(因为a的长度包括了小数点,然后判断是否需要四舍五入，还需要取定长的后一位(正则表达式中已写))
+    // 对数值进行进位判断处理
     if (a == scale + 2) {
       a = s.match(/\d/g);
 
@@ -98,7 +98,7 @@ function _myToFixed(num, scale) {
 
             // 如果不是 i == 1 的进位，那么返回数据的时候，需要将0去掉
             b = i != 1;
-          // 否则直接跳出
+            // 否则直接跳出
           } else break;
         }
       }
@@ -107,12 +107,12 @@ function _myToFixed(num, scale) {
         .join("")
         .replace(new RegExp("(\\d+)(\\d{" + scale + "})\\d$"), "$1.$2");
     }
-    console.log('s', s)
+    console.log("s", s);
     if (b) s = s.substr(1);
 
     return (pm + s).replace(/\.$/, "");
   }
 
   return num + "";
-};
-console.log(_myToFixed(1.255, 2))
+}
+console.log(_myToFixed(1.255, 2));

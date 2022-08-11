@@ -9,7 +9,7 @@
  */
 import { pathToRegexp } from "path-to-regexp";
 
-export function mathPath(pathReg, pathname, options = {}) {
+export default function mathPath(pathReg, pathname, options = {}) {
   // 获取路由匹配的默认的配置
   const opts = getOpts(options);
   // 获取匹配的key
@@ -25,7 +25,8 @@ export function mathPath(pathReg, pathname, options = {}) {
   const paramsKeys = result.slice(1);
   //1.组合返回的params
   const params = {};
-  for (let i = 0; i >= 0; i--) {
+  console.log('keys', keys)
+  for (let i = 0; i < keys.length; i++) {
     params[keys[i].name] = paramsKeys[i];
   }
   return {
