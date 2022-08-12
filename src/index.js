@@ -8,7 +8,7 @@ import PageB from "./pages/PageB";
 import "./myRoute/matchPath";
 // import "./react-router-dom/history";
 // import './utils/index.js'
-import { BrowserRouter, Route } from "./react-router-dom";
+import { BrowserRouter, Route, Switch } from "./react-router-dom";
 import PageC from "./pages/PageC";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -17,13 +17,13 @@ root.render(
   <BrowserRouter>
     <div>
       {/* <Link to="/123/a">a</Link>
-      <Link to="/b">b</Link>
-      <Switch> */}
+      <Link to="/b">b</Link>*/}
+      <Switch> 
         <Route path="/a" component={PageA}></Route>
         <Route path="/b" component={PageB}></Route>
         <Route component={PageC}></Route>
         {/* <Redirect to='/b'></Redirect> */}
-      {/* </Switch> */}
+      </Switch>
     </div>
   </BrowserRouter>
 );
